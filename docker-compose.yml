@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  node1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node1
+    environment:
+      - NODE_NAME=node1
+    volumes:
+      - ./peer_data:/data
+    networks:
+      - libp2p-net
+
+  node2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node2
+    environment:
+      - NODE_NAME=node2
+    volumes:
+      - ./peer_data:/data
+    networks:
+      - libp2p-net
+
+  node3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node3
+    environment:
+      - NODE_NAME=node3
+    volumes:
+      - ./peer_data:/data
+    networks:
+      - libp2p-net
+
+networks:
+  libp2p-net:
+    driver: bridge
